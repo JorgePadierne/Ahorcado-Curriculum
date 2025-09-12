@@ -1,6 +1,0 @@
-@ServerAhorcado_HostAddress = http://localhost:5032
-
-GET {{ServerAhorcado_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
