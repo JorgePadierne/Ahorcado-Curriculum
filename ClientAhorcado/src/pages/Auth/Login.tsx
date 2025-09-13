@@ -10,7 +10,7 @@ function Login() {
   } = useForm();
   const api = useAxios();
   const logUser = handleSubmit(async (data) => {
-    await api.post("/api", {
+    await api.post("/api/usuario/iniciarsesion", {
       Name: data.usuario,
       Password: data.password,
     });

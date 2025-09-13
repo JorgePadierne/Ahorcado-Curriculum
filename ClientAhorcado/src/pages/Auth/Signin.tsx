@@ -11,7 +11,7 @@ function Login() {
   const api = useAxios();
 
   const createUser = handleSubmit(async (data) => {
-    await api.post("/api", {
+    await api.post("/api/usuario/registrar", {
       Name: data.usuario,
       Password: data.usuario,
     });
