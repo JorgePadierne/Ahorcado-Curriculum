@@ -1,4 +1,8 @@
+import { Button } from "@headlessui/react";
+import { useNavigate } from "react-router-dom";
+
 export default function Dashboard() {
+  const navigate = useNavigate();
   return (
     <div className="bg-white">
       <div className="relative isolate px-6 pt-14 lg:px-8">
@@ -46,6 +50,12 @@ export default function Dashboard() {
             className="relative left-[calc(50%+3rem)] aspect-1155/678 w-144.5 -translate-x-1/2 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%+36rem)] sm:w-288.75"
           />
         </div>
+        <Button
+          onClick={() => navigate("/game")}
+          className="fixed bottom-20 right-10 bg-blue-500 text-white p-4 rounded-md w-30 bg-green-400 text-xl"
+        >
+          Jugar
+        </Button>
       </div>
     </div>
   );
