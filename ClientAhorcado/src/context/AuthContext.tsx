@@ -1,21 +1,31 @@
-import { createContext, useContext, ReactNode } from "react";
-import api from "../services/api";
-import type { AxiosInstance } from "axios";
+import { useState, type ReactNode } from "react";
+import { AuthContext } from "../hooks/useAuth";
 
-const AxiosContext = createContext<AxiosInstance | null>(null);
+interface User {
+  id: number;
+  name: string;
+}
 
-interface AxiosProviderProps {
+interface AuthProviderProps {
   children: ReactNode;
 }
 
-export const AxiosProvider: React.FC<AxiosProviderProps> = ({ children }) => {
-  return <AxiosContext.Provider value={api}>{children}</AxiosContext.Provider>;
-};
+export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  const [user, setUser] = useState<User | null>(null);
 
-export const useAxios = (): AxiosInstance => {
-  const context = useContext(AxiosContext);
-  if (!context) {
-    throw new Error("useAxios debe usarse dentro de un AxiosProvider");
-  }
-  return context;
+  const login = (userData: User) => {
+    setUser(userData);
+    setIsAuthenticated(true);
+  };
+  const logout = () => {
+    setUser(null);
+    setIsAuthenticated(false);
+  };
+
+  return (
+    <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };

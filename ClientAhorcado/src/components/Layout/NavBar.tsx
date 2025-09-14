@@ -7,6 +7,7 @@ import { useNavigate, NavLink } from "react-router-dom";
 const navigation = [
   { name: "Dashboard", href: "/dashboard" },
   { name: "Ranking", href: "/ranking" },
+  { name: "Game", href: "/game" },
 ];
 
 export default function NavBar() {
@@ -25,12 +26,16 @@ export default function NavBar() {
       >
         <div className="flex lg:flex-1"></div>
         <div className="flex lg:hidden"></div>
-        <div className="hidden lg:flex lg:gap-x-12">
+        <div className="hidden lg:flex lg:gap-x-12 text-xl">
           {navigation.map((item) => (
             <NavLink
               key={item.name}
               to={item.href}
-              className="text-lg/6 font-semibold text-gray-900"
+              className={({ isActive }) =>
+                isActive
+                  ? "text-lg/10 font-semibold text-green-600 underline"
+                  : "text-lg/10 font-semibold text-gray-900 hover:text-green-500 transition duration-300"
+              }
             >
               {item.name}
             </NavLink>
