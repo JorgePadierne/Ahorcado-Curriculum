@@ -1,5 +1,6 @@
 import { Button } from "@headlessui/react";
 import { useNavigate } from "react-router-dom";
+import Tutorial from "../components/Layout/Tutorial";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ export default function Dashboard() {
             className="relative left-[calc(50%-11rem)] aspect-1155/678 w-144.5 -translate-x-1/2 rotate-30 bg-linear-to-tr from-[#ff80b5] to-[#9089fc] opacity-30 sm:left-[calc(50%-30rem)] sm:w-288.75"
           />
         </div>
-        <div className="mx-auto max-w-3xl py-32 sm:py-48 lg:py-56">
+        <div className="mx-auto max-w-3xl py-32 sm:py-48 lg:py-10 mt-50">
           <div className="text-center">
             <h1 className="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
               Bienvenido al Ahorcado
@@ -29,12 +30,15 @@ export default function Dashboard() {
             </p>
           </div>
           <hr className="w-full border-t border-gray-900 my-4" />
-          <div className="mx-auto max-w-2xl py-12 sm:py-28 lg:py-26">
-            <div className="text-center">
-              <h2 className="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl">
-                Tutorial
-              </h2>
-            </div>
+        </div>
+      </div>
+      <div className="mx-auto max-w-6xl py-10 sm:py-20 lg:py-20">
+        <div className="text-center mb-8 bg-gray-100 rounded-2xl shadow-md p-8">
+          <h2 className="text-5xl font-semibold tracking-tight text-balance text-gray-900 sm:text-7xl mt-10">
+            Tutorial
+          </h2>
+          <div className="pt-15">
+            <Tutorial />
           </div>
         </div>
 
@@ -52,7 +56,7 @@ export default function Dashboard() {
         </div>
         <Button
           onClick={() => navigate("/game")}
-          className="fixed bottom-20 right-10 bg-blue-500 text-white p-4 rounded-md w-30 bg-green-400 text-xl"
+          className="fixed bottom-20 right-10 bg-blue-500 text-white p-4 rounded-xl w-30 bg-green-400 text-2xl hover:scale-110 transition duration-300"
         >
           Jugar
         </Button>

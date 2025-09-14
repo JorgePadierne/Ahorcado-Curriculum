@@ -19,7 +19,7 @@ function Login() {
   return (
     <div className="flex flex-col justify-center items-center px-6 py-12 lg:px-8 bg-white pt-35">
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h1 className="text-3xl font-bold text-center text-gray-900 mb-2">
+        <h1 className="text-3xl font-bold text-center text-green-400 mb-2">
           ¡Juego del Ahorcado!
         </h1>
         <h2 className="text-center text-xl font-semibold text-gray-700 mb-10">
@@ -100,7 +100,7 @@ function Login() {
           ¿Ya tienes cuenta?{" "}
           <a
             href="/"
-            className="font-semibold text-indigo-600 hover:text-indigo-500"
+            className="font-semibold text-green-600 hover:text-green-500"
           >
             Inicia sesión aquí
           </a>
