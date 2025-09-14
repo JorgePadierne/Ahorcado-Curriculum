@@ -181,8 +181,20 @@ function Game() {
               Usuario: user?.name || "Usuario desconocido",
               Puntuacion: puntuacion,
             });
+            Swal.fire({
+              title: "¡Puntuación guardada!",
+              text: `Tu puntuación de ${puntuacion} puntos ha sido guardada exitosamente.`,
+              icon: "success",
+              confirmButtonText: "¡Genial!"
+            });
           } catch (Error) {
             console.error(Error);
+            Swal.fire({
+              title: "Error",
+              text: "No se pudo guardar la puntuación. Inténtalo de nuevo.",
+              icon: "error",
+              confirmButtonText: "Entendido"
+            });
           }
         }
       });
