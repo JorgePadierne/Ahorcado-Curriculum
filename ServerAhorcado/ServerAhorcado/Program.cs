@@ -7,11 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("PermitirReact", policy =>
+    options.AddPolicy("PermitirVercel", policy =>
     {
-        policy.AllowAnyOrigin()
+        policy.WithOrigins("https://ahorcado-curriculum.vercel.app")
               .AllowAnyHeader()
-              .AllowAnyMethod();
+              .AllowAnyMethod()
+              .AllowCredentials();
     });
 });
 builder.Services.AddOpenApi();
@@ -59,7 +60,7 @@ if (app.Environment.IsDevelopment())
 // Health check endpoint
 app.MapGet("/health", () => Results.Ok(new { status = "healthy", timestamp = DateTime.UtcNow }));
 
-app.UseCors("PermitirReact");
+app.UseCors("PermitirVercel");
 app.UseAuthorization();
 app.MapControllers();
 app.Run();

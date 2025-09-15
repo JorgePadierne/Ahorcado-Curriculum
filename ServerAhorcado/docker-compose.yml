@@ -24,7 +24,7 @@ services:
   # Aplicación .NET
   api:
     build:
-      context: ./ServerAhorcado
+      context: ./ServerAhorcado/ServerAhorcado
       dockerfile: DockerFile
     container_name: ahorcado-api
     environment:
