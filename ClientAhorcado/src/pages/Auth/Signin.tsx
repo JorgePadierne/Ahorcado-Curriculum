@@ -2,7 +2,7 @@ import { Input, Button, Label } from "../../components/UI/index";
 import { useForm } from "react-hook-form";
 import { useAxios } from "../../hooks/useAxios";
 import { useAuth } from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { toast, ToastContainer } from "react-toastify";
 
@@ -62,7 +62,7 @@ function Signin() {
   });
 
   return (
-    <div className="flex flex-col justify-center items-center px-6 py-12 lg:px-8 bg-white pt-35">
+    <div className="flex flex-col justify-center items-center px-6 py-12 lg:px-8 bg-white pt-36">
       <ToastContainer />
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h1 className="text-3xl font-bold text-center text-green-400 mb-2">
@@ -146,12 +146,12 @@ function Signin() {
 
         <p className="mt-10 text-center text-sm text-gray-500">
           ¿Ya tienes cuenta?{" "}
-          <a
-            href="/"
+          <Link
+            to="/"
             className="font-semibold text-green-600 hover:text-green-500"
           >
             Inicia sesión aquí
-          </a>
+          </Link>
         </p>
       </div>
     </div>

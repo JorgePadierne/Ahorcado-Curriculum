@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAxios } from "../../hooks/useAxios";
 import { useAuth } from "../../hooks/useAuth";
@@ -150,12 +150,12 @@ function Login() {
 
         <p className="mt-10 text-center text-sm text-gray-500">
           ¿No tienes cuenta?{" "}
-          <a
-            href="/signin"
+          <Link
+            to="/signin"
             className="font-semibold text-green-600 hover:text-green-500"
           >
             Regístrate aquí
-          </a>
+          </Link>
         </p>
       </div>
     </div>
