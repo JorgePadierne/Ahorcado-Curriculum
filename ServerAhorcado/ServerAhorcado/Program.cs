@@ -10,6 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddOpenApi();
 
 // Configuración de CORS
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirVercel", policy =>
