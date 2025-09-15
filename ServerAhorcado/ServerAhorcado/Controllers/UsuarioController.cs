@@ -20,14 +20,15 @@ namespace ServerAhorcado.Controllers
         [HttpPost("Registrar")]
         public async Task<IActionResult> RegistrarUsuario([FromBody] Usuario usuario)
         {
-            if (!ModelState.IsValid)
-                return BadRequest(ModelState);
-
-            if (await _context.Usuarios.AnyAsync(u => u.Name == usuario.Name))
-                return Conflict(new { success = false, mensaje = "El usuario ya existe" });
-
+            
             try
             {
+                if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+                if (await _context.Usuarios.AnyAsync(u => u.Name == usuario.Name))
+                return Conflict(new { success = false, mensaje = "El usuario ya existe" });
+
                 var hasher = new PasswordHasher<Usuario>();
                 usuario.Password = hasher.HashPassword(usuario, usuario.Password);
 
