@@ -3,7 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /app
 
 # Copiar el proyecto y restaurar dependencias
-COPY ServerAhorcado/*.csproj ./
+COPY ServerAhorcado/ ./ServerAhorcado*.csproj
 RUN dotnet restore
 
 # Copiar todo el código y compilar
