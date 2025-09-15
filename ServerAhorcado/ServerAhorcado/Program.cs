@@ -9,8 +9,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirReact", policy =>
     {
-        policy.AllowAnyOrigin()
+        policy.WithOrigins("https://ahorcado-curriculum.vercel.app/signin" ,
+            "https://ahorcado-curriculum.vercel.app")
               .AllowAnyHeader()
+              .AllowCredentials()
               .AllowAnyMethod();
     });
 });
