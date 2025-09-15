@@ -43,7 +43,7 @@ else
 {
     // Fallback a appsettings.json ? ConnectionStrings:DefaultConnection
     connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-        ?? throw new InvalidOperationException("No se encontró ninguna cadena de conexión.");
+        ?? throw new InvalidOperationException("No se encontrï¿½ ninguna cadena de conexiï¿½n.");
 }
 
 builder.Services.AddDbContext<AhorcadoDBContext>(options =>
@@ -55,6 +55,10 @@ if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
+
+// Health check endpoint
+app.MapGet("/health", () => Results.Ok(new { status = "healthy", timestamp = DateTime.UtcNow }));
+
 app.UseCors("PermitirReact");
 app.UseAuthorization();
 app.MapControllers();
