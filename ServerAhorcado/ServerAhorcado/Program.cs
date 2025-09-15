@@ -4,39 +4,35 @@ using System.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Agregar servicios
 builder.Services.AddControllers();
-
-// Configuración de OpenAPI
-builder.Services.AddOpenApi();
-
-// Configuración de CORS solo para tu frontend de producción
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy("PermitirVercel", policy =>
+    options.AddPolicy("PermitirReact", policy =>
     {
-        policy
-            .WithOrigins("https://ahorcado-curriculum.vercel.app") // Solo producción
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials(); // si envías cookies o JWT
+        policy.WithOrigins("https://ahorcado-curriculum.vercel.app")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
     });
 });
+builder.Services.AddOpenApi();
 
-// Configuración de base de datos
 string? databaseUrl = builder.Configuration["DATABASE_URL"];
 string connectionString;
 
 if (!string.IsNullOrEmpty(databaseUrl) &&
     (databaseUrl.StartsWith("postgres") || databaseUrl.StartsWith("postgresql")))
 {
+    // Parsear DATABASE_URL estilo Heroku/Neon
     var uri = new Uri(databaseUrl);
+
     var userInfo = uri.UserInfo.Split(':');
     var username = userInfo[0];
     var password = userInfo[1];
+
     var host = uri.Host;
     var port = uri.Port;
     var database = uri.AbsolutePath.TrimStart('/');
+
     var query = HttpUtility.ParseQueryString(uri.Query);
     var sslMode = query["sslmode"] ?? "Require";
 
@@ -45,8 +41,9 @@ if (!string.IsNullOrEmpty(databaseUrl) &&
 }
 else
 {
+    // Fallback a appsettings.json ? ConnectionStrings:DefaultConnection
     connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-        ?? throw new InvalidOperationException("No se encontró ninguna cadena de conexión.");
+        ?? throw new InvalidOperationException("No se encontr� ninguna cadena de conexi�n.");
 }
 
 builder.Services.AddDbContext<AhorcadoDBContext>(options =>
@@ -54,23 +51,11 @@ builder.Services.AddDbContext<AhorcadoDBContext>(options =>
 
 var app = builder.Build();
 
-// Usar CORS ANTES de MapControllers y UseAuthorization
-app.UseCors("PermitirVercel");
-
-app.UseAuthorization();
-
-// OpenAPI solo en desarrollo
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
 }
-
-// Health check endpoint
-app.MapGet("/health", () => Results.Ok(new { status = "healthy", timestamp = DateTime.UtcNow }));
-
-// Mapear controladores
+app.UseCors("PermitirReact");
+app.UseAuthorization();
 app.MapControllers();
-
 app.Run();
-
-

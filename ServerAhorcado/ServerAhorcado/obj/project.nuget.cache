@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "O1S+GyidZFU=",
+  "dgSpecHash": "esNHIdJqLHM=",
   "success": true,
-  "projectFilePath": "C:\\Users\\jorge\\Desktop\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\ServerAhorcado.csproj",
+  "projectFilePath": "C:\\Users\\jorge\\Desktop\\ServerAhorcado\\ServerAhorcado\\ServerAhorcado.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\jorge\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\jorge\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.8\\microsoft.aspnetcore.openapi.9.0.8.nupkg.sha512",
