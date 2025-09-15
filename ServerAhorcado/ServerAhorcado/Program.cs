@@ -5,8 +5,22 @@ using System.Web;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
+// Configuración de OpenAPI
 builder.Services.AddOpenApi();
+
+// Configuración de CORS
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("PermitirVercel", policy =>
+    {
+        policy
+            .WithOrigins("https://ahorcado-curriculum.vercel.app") // Solo tu frontend
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 string? databaseUrl = builder.Configuration["DATABASE_URL"];
 string connectionString;
@@ -33,9 +47,9 @@ if (!string.IsNullOrEmpty(databaseUrl) &&
 }
 else
 {
-    // Fallback a appsettings.json ? ConnectionStrings:DefaultConnection
+    // Fallback a appsettings.json
     connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-        ?? throw new InvalidOperationException("No se encontr� ninguna cadena de conexi�n.");
+        ?? throw new InvalidOperationException("No se encontró ninguna cadena de conexión.");
 }
 
 builder.Services.AddDbContext<AhorcadoDBContext>(options =>
@@ -51,7 +65,11 @@ if (app.Environment.IsDevelopment())
 // Health check endpoint
 app.MapGet("/health", () => Results.Ok(new { status = "healthy", timestamp = DateTime.UtcNow }));
 
+// Usar CORS
 app.UseCors("PermitirVercel");
+
 app.UseAuthorization();
 app.MapControllers();
+
 app.Run();
+
