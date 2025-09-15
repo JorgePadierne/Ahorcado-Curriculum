@@ -1,19 +1,25 @@
-# Build stage
+# Etapa 1: build
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+WORKDIR /src
+
+# Copia todo
+COPY . .
+
+# Restaura dependencias
+RUN dotnet restore ServerAhorcado/ServerAhorcado.csproj
+
+# Compila en release
+RUN dotnet publish ServerAhorcado/ServerAhorcado.csproj -c Release -o /app/publish
+
+# Etapa 2: runtime
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 WORKDIR /app
 
-# Copiar el proyecto y restaurar dependencias
-COPY ServerAhorcado/ ./ServerAhorcado*.csproj
-RUN dotnet restore
+# Copiar app publicada
+COPY --from=build /app/publish .
 
-# Copiar todo el código y compilar
-COPY src/. ./
-RUN dotnet publish -c Release -o out
+# Exponer puerto (Render usa 10000 interno, pero ASP.NET por defecto es 8080)
+EXPOSE 8080
 
-# Runtime stage
-FROM mcr.microsoft.com/dotnet/aspnet:9.0
-WORKDIR /app
-COPY --from=build /app/out .
+# Iniciar app
 ENTRYPOINT ["dotnet", "ServerAhorcado.dll"]
-
-
