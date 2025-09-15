@@ -9,10 +9,8 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirReact", policy =>
     {
-        policy.WithOrigins("https://ahorcado-curriculum.vercel.app/signin" ,
-            "https://ahorcado-curriculum.vercel.app")
+        policy.AllowAnyOrigen()
               .AllowAnyHeader()
-              .AllowCredentials()
               .AllowAnyMethod();
     });
 });
@@ -45,7 +43,7 @@ else
 {
     // Fallback a appsettings.json ? ConnectionStrings:DefaultConnection
     connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-        ?? throw new InvalidOperationException("No se encontró ninguna cadena de conexión.");
+        ?? throw new InvalidOperationException("No se encontrÃ³ ninguna cadena de conexiÃ³n.");
 }
 
 builder.Services.AddDbContext<AhorcadoDBContext>(options =>
