@@ -48,21 +48,24 @@ namespace ServerAhorcado.Controllers
         [HttpGet("puntuaciones")]
         public async Task<IActionResult> GetPuntuaciones()
         {
-            try
+        try
             {
-                var puntuaciones = await _context.Puntuaciones.ToListAsync();
-                if (puntuaciones == null)
-                {
-                    return StatusCode(204, new { succes = false, message = "No existen puntuaciones en la lista." });
-                }
-                return Ok(puntuaciones);
+            var puntuaciones = await _context.Puntuaciones
+                .OrderByDescending(u => u.Puntuacion)
+                .ToListAsync();
+
+            if (!puntuaciones.Any())
+            {
+                return StatusCode(204, new { success = false, message = "No existen puntuaciones en la lista." });
+            }
+
+            return Ok(puntuaciones);
             }
             catch (Exception ex)
             {
-                return BadRequest(new { success = false, message = "Accion incompleta." + ex.Message});
+                return BadRequest(new { success = false, message = "Acción incompleta. " + ex.Message });
             }
-           
-        }
+}
 
         [HttpPatch("agregarpuntuacion")]
         public async Task<IActionResult> AgregarPuntuacion([FromBody] PuntuacionUsuario puntuacion)
