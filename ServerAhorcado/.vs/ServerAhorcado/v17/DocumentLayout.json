@@ -1,0 +1,117 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\GitHub\\Ahorcado-Curriculum\\ServerAhorcado\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9FB01698-7B49-44E6-8397-BE64B14BEA76}|ServerAhorcado\\ServerAhorcado.csproj|c:\\github\\ahorcado-curriculum\\serverahorcado\\serverahorcado\\controllers\\juegocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9FB01698-7B49-44E6-8397-BE64B14BEA76}|ServerAhorcado\\ServerAhorcado.csproj|solutionrelative:serverahorcado\\controllers\\juegocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9FB01698-7B49-44E6-8397-BE64B14BEA76}|ServerAhorcado\\ServerAhorcado.csproj|c:\\github\\ahorcado-curriculum\\serverahorcado\\serverahorcado\\context\\ahorcadodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9FB01698-7B49-44E6-8397-BE64B14BEA76}|ServerAhorcado\\ServerAhorcado.csproj|solutionrelative:serverahorcado\\context\\ahorcadodbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9FB01698-7B49-44E6-8397-BE64B14BEA76}|ServerAhorcado\\ServerAhorcado.csproj|c:\\github\\ahorcado-curriculum\\serverahorcado\\serverahorcado\\models\\puntuaciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9FB01698-7B49-44E6-8397-BE64B14BEA76}|ServerAhorcado\\ServerAhorcado.csproj|solutionrelative:serverahorcado\\models\\puntuaciones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9FB01698-7B49-44E6-8397-BE64B14BEA76}|ServerAhorcado\\ServerAhorcado.csproj|c:\\github\\ahorcado-curriculum\\serverahorcado\\serverahorcado\\models\\puntuacionusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9FB01698-7B49-44E6-8397-BE64B14BEA76}|ServerAhorcado\\ServerAhorcado.csproj|solutionrelative:serverahorcado\\models\\puntuacionusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9FB01698-7B49-44E6-8397-BE64B14BEA76}|ServerAhorcado\\ServerAhorcado.csproj|c:\\github\\ahorcado-curriculum\\serverahorcado\\serverahorcado\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9FB01698-7B49-44E6-8397-BE64B14BEA76}|ServerAhorcado\\ServerAhorcado.csproj|solutionrelative:serverahorcado\\models\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9FB01698-7B49-44E6-8397-BE64B14BEA76}|ServerAhorcado\\ServerAhorcado.csproj|c:\\github\\ahorcado-curriculum\\serverahorcado\\serverahorcado\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9FB01698-7B49-44E6-8397-BE64B14BEA76}|ServerAhorcado\\ServerAhorcado.csproj|solutionrelative:serverahorcado\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AhorcadoDBContext.cs",
+              "DocumentMoniker": "C:\\GitHub\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\Context\\AhorcadoDBContext.cs",
+              "RelativeDocumentMoniker": "ServerAhorcado\\Context\\AhorcadoDBContext.cs",
+              "ToolTip": "C:\\GitHub\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\Context\\AhorcadoDBContext.cs",
+              "RelativeToolTip": "ServerAhorcado\\Context\\AhorcadoDBContext.cs",
+              "ViewState": "AgIAACAAAAAAAAAAAAAtwC0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-14T23:53:12.861Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\GitHub\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\Models\\Usuario.cs",
+              "RelativeDocumentMoniker": "ServerAhorcado\\Models\\Usuario.cs",
+              "ToolTip": "C:\\GitHub\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\Models\\Usuario.cs",
+              "RelativeToolTip": "ServerAhorcado\\Models\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-14T23:47:23.401Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PuntuacionUsuario.cs",
+              "DocumentMoniker": "C:\\GitHub\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\Models\\PuntuacionUsuario.cs",
+              "RelativeDocumentMoniker": "ServerAhorcado\\Models\\PuntuacionUsuario.cs",
+              "ToolTip": "C:\\GitHub\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\Models\\PuntuacionUsuario.cs",
+              "RelativeToolTip": "ServerAhorcado\\Models\\PuntuacionUsuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-14T23:46:18.186Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UsuarioController.cs",
+              "DocumentMoniker": "C:\\GitHub\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\Controllers\\UsuarioController.cs",
+              "RelativeDocumentMoniker": "ServerAhorcado\\Controllers\\UsuarioController.cs",
+              "ToolTip": "C:\\GitHub\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\Controllers\\UsuarioController.cs",
+              "RelativeToolTip": "ServerAhorcado\\Controllers\\UsuarioController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-14T23:39:15.868Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "JuegoController.cs",
+              "DocumentMoniker": "C:\\GitHub\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\Controllers\\JuegoController.cs",
+              "RelativeDocumentMoniker": "ServerAhorcado\\Controllers\\JuegoController.cs",
+              "ToolTip": "C:\\GitHub\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\Controllers\\JuegoController.cs",
+              "RelativeToolTip": "ServerAhorcado\\Controllers\\JuegoController.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAuwGYAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-14T23:39:10.978Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Puntuaciones.cs",
+              "DocumentMoniker": "C:\\GitHub\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\Models\\Puntuaciones.cs",
+              "RelativeDocumentMoniker": "ServerAhorcado\\Models\\Puntuaciones.cs",
+              "ToolTip": "C:\\GitHub\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\Models\\Puntuaciones.cs",
+              "RelativeToolTip": "ServerAhorcado\\Models\\Puntuaciones.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-14T23:39:06.372Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

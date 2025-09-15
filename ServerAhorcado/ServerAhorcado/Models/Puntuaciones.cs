@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace ServerAhorcado.Models;
 
-public partial class Puntuacione
+public partial class Puntuaciones
 {
     public long Id { get; set; }
 

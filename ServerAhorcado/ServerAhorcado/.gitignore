@@ -1,0 +1,48 @@
+# Compilación
+bin/
+obj/
+out/
+Debug/
+Release/
+
+# Archivos de usuario
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vs/
+*.dbmdl
+*.jfm
+*.pdb
+
+# Rider / JetBrains
+.idea/
+*.iml
+
+# Archivos de dependencias
+packages/
+*.nupkg
+*.snupkg
+*.nuspec
+*.dll
+*.exe
+
+# Archivos de publicación
+publish/
+*.PublishSettings
+
+# Logs y temporales
+*.log
+*.tmp
+*.temp
+*.bak
+
+# Configuración sensible (si usas secretos aquí, mejor ignorar)
+appsettings.Development.json
+appsettings.Local.json
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
