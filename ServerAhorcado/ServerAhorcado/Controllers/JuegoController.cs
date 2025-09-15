@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using ServerAhorcado;
 using ServerAhorcado.Context;
 using ServerAhorcado.Models;
+using System.Globalization;
 using System.Security.Cryptography;
 namespace ServerAhorcado.Controllers
 {
@@ -43,7 +44,63 @@ namespace ServerAhorcado.Controllers
                 return StatusCode(500, new { success = false, mensaje = "Error al obtener la palabra: " + ex.Message });
             }
         }
+        //puntaje = (intentos_restantes × 100 + largo_palabra × 10 + bono_tiempo) × multiplicador_dificultad + bonus_especiales
+        [HttpGet("puntuaciones")]
+        public async Task<IActionResult> GetPuntuaciones()
+        {
+            try
+            {
+                var puntuaciones = await _context.Puntuaciones.ToListAsync();
+                if (puntuaciones == null)
+                {
+                    return StatusCode(204, new { succes = false, message = "No existen puntuaciones en la lista." });
+                }
+                return Ok(puntuaciones);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { success = false, message = "Accion incompleta." + ex.Message});
+            }
+           
+        }
 
+        [HttpPatch("agregarpuntuacion")]
+        public async Task<IActionResult> AgregarPuntuacion([FromBody] PuntuacionUsuario puntuacion)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var puntajeExistente = await _context.Puntuaciones
+                    .FirstOrDefaultAsync(p => p.Name == puntuacion.Usuario);
+
+                if (puntajeExistente != null)
+                {
+                    puntajeExistente.Puntuacion += puntuacion.Puntuacion;
+                    await _context.SaveChangesAsync();
+
+                    return Ok(new { success = true, message = "Puntuación actualizada correctamente" });
+                }
+                else
+                {
+                    var nuevo = new Puntuaciones
+                    {
+                        Name = puntuacion.Usuario,
+                        Puntuacion = puntuacion.Puntuacion
+                    };
+
+                    await _context.Puntuaciones.AddAsync(nuevo);
+                    await _context.SaveChangesAsync();
+
+                    return StatusCode(201, new { success = true, message = "Puntuación registrada correctamente" });
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { success = false, message = "Algo ha ido mal, inténtelo nuevamente: " + ex.Message });
+            }
+        }
 
     }
 }

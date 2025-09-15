@@ -18,7 +18,7 @@ public partial class AhorcadoDBContext : DbContext
 
     public virtual DbSet<Palabra> Palabras { get; set; }
 
-    public virtual DbSet<Puntuacione> Puntuaciones { get; set; }
+    public virtual DbSet<Puntuaciones> Puntuaciones { get; set; }
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
@@ -43,7 +43,7 @@ public partial class AhorcadoDBContext : DbContext
                 .HasColumnName("palabras");
         });
 
-        modelBuilder.Entity<Puntuacione>(entity =>
+        modelBuilder.Entity<Puntuaciones>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("puntuaciones_pkey");
 
