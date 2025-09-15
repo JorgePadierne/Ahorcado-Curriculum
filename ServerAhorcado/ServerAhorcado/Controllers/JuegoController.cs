@@ -65,7 +65,7 @@ namespace ServerAhorcado.Controllers
             {
                 return BadRequest(new { success = false, message = "Acción incompleta. " + ex.Message });
             }
-}
+        }
 
         [HttpPatch("agregarpuntuacion")]
         public async Task<IActionResult> AgregarPuntuacion([FromBody] PuntuacionUsuario puntuacion)
