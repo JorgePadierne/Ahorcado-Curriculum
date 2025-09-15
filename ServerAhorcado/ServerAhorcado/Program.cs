@@ -4,41 +4,39 @@ using System.Web;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Agregar servicios
 builder.Services.AddControllers();
 
 // Configuración de OpenAPI
 builder.Services.AddOpenApi();
 
-// Configuración de CORS
-
+// Configuración de CORS solo para tu frontend de producción
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirVercel", policy =>
     {
         policy
-            .WithOrigins("https://ahorcado-curriculum.vercel.app") // Solo tu frontend
+            .WithOrigins("https://ahorcado-curriculum.vercel.app") // Solo producción
             .AllowAnyHeader()
-            .AllowAnyMethod();
+            .AllowAnyMethod()
+            .AllowCredentials(); // si envías cookies o JWT
     });
 });
 
+// Configuración de base de datos
 string? databaseUrl = builder.Configuration["DATABASE_URL"];
 string connectionString;
 
 if (!string.IsNullOrEmpty(databaseUrl) &&
     (databaseUrl.StartsWith("postgres") || databaseUrl.StartsWith("postgresql")))
 {
-    // Parsear DATABASE_URL estilo Heroku/Neon
     var uri = new Uri(databaseUrl);
-
     var userInfo = uri.UserInfo.Split(':');
     var username = userInfo[0];
     var password = userInfo[1];
-
     var host = uri.Host;
     var port = uri.Port;
     var database = uri.AbsolutePath.TrimStart('/');
-
     var query = HttpUtility.ParseQueryString(uri.Query);
     var sslMode = query["sslmode"] ?? "Require";
 
@@ -47,7 +45,6 @@ if (!string.IsNullOrEmpty(databaseUrl) &&
 }
 else
 {
-    // Fallback a appsettings.json
     connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
         ?? throw new InvalidOperationException("No se encontró ninguna cadena de conexión.");
 }
@@ -57,6 +54,12 @@ builder.Services.AddDbContext<AhorcadoDBContext>(options =>
 
 var app = builder.Build();
 
+// Usar CORS ANTES de MapControllers y UseAuthorization
+app.UseCors("PermitirVercel");
+
+app.UseAuthorization();
+
+// OpenAPI solo en desarrollo
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
@@ -65,11 +68,9 @@ if (app.Environment.IsDevelopment())
 // Health check endpoint
 app.MapGet("/health", () => Results.Ok(new { status = "healthy", timestamp = DateTime.UtcNow }));
 
-// Usar CORS
-app.UseCors("PermitirVercel");
-
-app.UseAuthorization();
+// Mapear controladores
 app.MapControllers();
 
 app.Run();
+
 
