@@ -2884,11 +2884,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jorge\\Desktop\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\ServerAhorcado.csproj",
+      "projectUniqueName": "C:\\Users\\jorge\\Desktop\\ServerAhorcado\\ServerAhorcado\\ServerAhorcado.csproj",
       "projectName": "ServerAhorcado",
-      "projectPath": "C:\\Users\\jorge\\Desktop\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\ServerAhorcado.csproj",
+      "projectPath": "C:\\Users\\jorge\\Desktop\\ServerAhorcado\\ServerAhorcado\\ServerAhorcado.csproj",
       "packagesPath": "C:\\Users\\jorge\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jorge\\Desktop\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\obj\\",
+      "outputPath": "C:\\Users\\jorge\\Desktop\\ServerAhorcado\\ServerAhorcado\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

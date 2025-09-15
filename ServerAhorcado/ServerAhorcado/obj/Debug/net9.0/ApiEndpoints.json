@@ -1,6 +1,22 @@
 [
   {
     "ContainingType": "ServerAhorcado.Controllers.JuegoController",
+    "Method": "AgregarPuntuacion",
+    "RelativePath": "api/Juego/agregarpuntuacion",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "puntuacion",
+        "Type": "ServerAhorcado.Models.PuntuacionUsuario",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ServerAhorcado.Controllers.JuegoController",
     "Method": "GetPalabra",
     "RelativePath": "api/Juego/PalabraAleatoria",
     "HttpMethod": "GET",
@@ -23,22 +39,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "ServerAhorcado.Controllers.JuegoController",
-    "Method": "GetUsuarioId",
-    "RelativePath": "api/Juego/recibirUsuario/{Id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
     "ReturnTypes": []
   },
   {
