@@ -94,8 +94,8 @@ function Game() {
 
   const handleDificultad = async () => {
     try {
-      const res: ResponseApi = await api.post(
-        `/api/palabraaleatoria?dificultad=${select}`
+      const res: ResponseApi = await api.get(
+        `/api/juego/palabraaleatoria?dificultad=${select}`
       );
       if (res.success) {
         const wordTemp = res.palabra.toUpperCase();
@@ -177,7 +177,7 @@ function Game() {
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
-            await api.patch("/api/agregarpuntuacion", {
+            await api.patch("/api/juego/agregarpuntuacion", {
               Usuario: user?.name || "Usuario desconocido",
               Puntuacion: puntuacion,
             });

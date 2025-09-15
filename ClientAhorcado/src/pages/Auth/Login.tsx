@@ -22,7 +22,7 @@ function Login() {
     setIsLoading(true);
     try {
       // Intentar hacer login con las credenciales
-      const response = await api.post("/api/usuario/login", {
+      const response = await api.post("/api/usuario/iniciarsesion", {
         Name: data.usuario,
         Password: data.password,
       });
@@ -40,8 +40,8 @@ function Login() {
         });
 
         const user = {
-          id: response.data.user.id,
-          name: response.data.user.name,
+          id: Date.now(), // Generar ID temporal ya que el servidor no devuelve datos del usuario
+          name: data.usuario,
         };
         login(user);
         navigate("/dashboard");
