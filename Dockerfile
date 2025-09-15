@@ -1,17 +1,17 @@
-<<<<<<< HEAD
-# 1️⃣ Etapa de build
+# Dockerfile para construir desde la raíz del proyecto
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 
 # Establecer directorio de trabajo
 WORKDIR /src
 
 # Copiar archivos del proyecto y restaurar dependencias
-COPY ServerAhorcado.csproj ./
-RUN dotnet restore ServerAhorcado.csproj
+COPY ServerAhorcado/ServerAhorcado/ServerAhorcado.csproj ./ServerAhorcado/ServerAhorcado/
+WORKDIR /src/ServerAhorcado/ServerAhorcado
+RUN dotnet restore
 
 # Copiar el resto del código y compilar
-COPY . ./
-RUN dotnet publish ServerAhorcado.csproj -c Release -o /app/publish --no-restore
+COPY ServerAhorcado/ServerAhorcado/ ./
+RUN dotnet publish -c Release -o /app/publish --no-restore
 
 # 2️⃣ Etapa de runtime
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
@@ -45,38 +45,3 @@ HEALTHCHECK --interval=30s --timeout=3s --start-period=5s --retries=3 \
 
 # Comando para ejecutar la app
 ENTRYPOINT ["dotnet", "ServerAhorcado.dll"]
-=======
-# Dockerfile optimizado para Render
-FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
-
-# Establecer directorio de trabajo
-WORKDIR /app
-
-# Copiar archivos del proyecto
-COPY . .
-
-# Restaurar dependencias
-RUN dotnet restore
-
-# Compilar y publicar
-RUN dotnet publish -c Release -o /app/publish
-
-# Etapa de runtime
-FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
-
-# Establecer directorio de trabajo
-WORKDIR /app
-
-# Copiar archivos publicados
-COPY --from=build /app/publish .
-
-# Exponer puerto
-EXPOSE 10000
-
-# Variables de entorno
-ENV ASPNETCORE_ENVIRONMENT=Production
-ENV ASPNETCORE_URLS=http://+:10000
-
-# Comando de inicio
-ENTRYPOINT ["dotnet", "ServerAhorcado.dll"]
->>>>>>> backend

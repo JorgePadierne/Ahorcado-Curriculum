@@ -25,7 +25,11 @@ services:
   api:
     build:
       context: ./ServerAhorcado/ServerAhorcado
+<<<<<<< HEAD
       dockerfile: DockerFile
+=======
+      dockerfile: Dockerfile
+>>>>>>> backend
     container_name: ahorcado-api
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
