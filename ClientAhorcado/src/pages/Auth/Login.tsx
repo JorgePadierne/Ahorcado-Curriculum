@@ -4,13 +4,14 @@ import { useAxios } from "../../hooks/useAxios";
 import { useAuth } from "../../hooks/useAuth";
 import { Input, Button, Label } from "../../components/UI/index";
 import { useForm } from "react-hook-form";
+import { ToastContainer, toast } from "react-toastify";
 
 function Login() {
   const api = useAxios();
   const navigate = useNavigate();
   const { login } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const {
     register,
     handleSubmit,
@@ -25,25 +26,48 @@ function Login() {
         Name: data.usuario,
         Password: data.password,
       });
-      
+
       if (response.data && response.data.success) {
+        toast.success("Sesión iniciada", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
+
         const user = {
           id: response.data.user.id,
-          name: response.data.user.name
+          name: response.data.user.name,
         };
         login(user);
         navigate("/dashboard");
       }
     } catch (error) {
+      toast.error("Error al iniciar sesión", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+
       console.error("Error al hacer login:", error);
       // Aquí podrías mostrar un mensaje de error al usuario
     } finally {
       setIsLoading(false);
     }
   });
-  
+
   return (
     <div className="flex flex-col justify-center items-center px-6 py-12 lg:px-8 bg-white pt-35">
+      <ToastContainer />
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h1 className="text-3xl font-bold text-center text-green-400 mb-2">
           ¡Juego del Ahorcado!

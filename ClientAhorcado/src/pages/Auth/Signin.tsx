@@ -4,6 +4,7 @@ import { useAxios } from "../../hooks/useAxios";
 import { useAuth } from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 
 function Signin() {
   const {
@@ -23,17 +24,37 @@ function Signin() {
         Name: data.usuario,
         Password: data.password,
       });
-      
+
       // Si el registro es exitoso, crear el objeto usuario y hacer login
       if (response.data) {
+        toast.success("Usuario creado", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
         const newUser = {
           id: response.data.id || Date.now(), // Usar ID del servidor o timestamp como fallback
-          name: data.usuario
+          name: data.usuario,
         };
         login(newUser);
         navigate("/dashboard");
       }
     } catch (error) {
+      toast.error("Error al crear usuario", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       console.error("Error al crear usuario:", error);
     } finally {
       setIsLoading(false);
@@ -42,6 +63,7 @@ function Signin() {
 
   return (
     <div className="flex flex-col justify-center items-center px-6 py-12 lg:px-8 bg-white pt-35">
+      <ToastContainer />
       <div className="sm:mx-auto sm:w-full sm:max-w-sm">
         <h1 className="text-3xl font-bold text-center text-green-400 mb-2">
           ¡Juego del Ahorcado!

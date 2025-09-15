@@ -177,7 +177,7 @@ function Game() {
       }).then(async (result) => {
         if (result.isConfirmed) {
           try {
-            await api.post("/api/agregarpuntuacion", {
+            await api.patch("/api/agregarpuntuacion", {
               Usuario: user?.name || "Usuario desconocido",
               Puntuacion: puntuacion,
             });
@@ -185,7 +185,7 @@ function Game() {
               title: "¡Puntuación guardada!",
               text: `Tu puntuación de ${puntuacion} puntos ha sido guardada exitosamente.`,
               icon: "success",
-              confirmButtonText: "¡Genial!"
+              confirmButtonText: "¡Genial!",
             });
           } catch (Error) {
             console.error(Error);
@@ -193,7 +193,7 @@ function Game() {
               title: "Error",
               text: "No se pudo guardar la puntuación. Inténtalo de nuevo.",
               icon: "error",
-              confirmButtonText: "Entendido"
+              confirmButtonText: "Entendido",
             });
           }
         }
