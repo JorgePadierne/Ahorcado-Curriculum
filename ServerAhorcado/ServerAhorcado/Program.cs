@@ -15,6 +15,7 @@ builder.Services.AddCors(options =>
               .AllowCredentials();
     });
 });
+
 builder.Services.AddOpenApi();
 
 string? databaseUrl = builder.Configuration["DATABASE_URL"];
