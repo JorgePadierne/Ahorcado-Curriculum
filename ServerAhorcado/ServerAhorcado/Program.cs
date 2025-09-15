@@ -5,17 +5,7 @@ using System.Web;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy("PermitirVercel", policy =>
-    {
-        policy.WithOrigins("https://ahorcado-curriculum.vercel.app")
-              .AllowAnyHeader()
-              .AllowAnyMethod()
-              .AllowCredentials();
-    });
-});
-
+// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
 string? databaseUrl = builder.Configuration["DATABASE_URL"];
