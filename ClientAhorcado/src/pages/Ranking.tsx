@@ -8,12 +8,15 @@ type UserRank = {
 };
 function Ranking() {
   const api = useAxios();
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<UserRank[]>([]);
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const { data } = await api.get("/api/juego/puntuaciones");
-      setUsers(data);
+      const { data } = await api.get<UserRank[]>("/api/juego/puntuaciones");
+      const rankingOrdenado = data
+        .slice()
+        .sort((a, b) => b.puntuacion - a.puntuacion);
+      setUsers(rankingOrdenado);
     };
 
     fetchUsers();
@@ -26,7 +29,7 @@ function Ranking() {
           🏆 Ranking
         </h1>
         <div className="space-y-4">
-          {users.map((user: UserRank, index: number) => (
+          {users.map((user, index: number) => (
             <div
               key={user.id}
               className={`flex items-center justify-between p-4 rounded-xl shadow-md transition transform hover:-translate-y-1 hover:shadow-lg 
