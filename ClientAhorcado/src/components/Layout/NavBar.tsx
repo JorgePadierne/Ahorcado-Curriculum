@@ -29,7 +29,7 @@ export default function NavBar() {
             className="text-xl font-bold cursor-pointer"
             onClick={handleNavigate}
           >
-            MiLogo
+            Ahorcado
           </span>
         </div>
 

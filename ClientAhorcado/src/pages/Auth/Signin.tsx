@@ -45,7 +45,7 @@ function Signin() {
       login(newUser);
       setTimeout(() => {
         navigate("/");
-      });
+      }, 1000);
     } catch (error) {
       toast.error("Error al crear usuario", {
         position: "top-right",
