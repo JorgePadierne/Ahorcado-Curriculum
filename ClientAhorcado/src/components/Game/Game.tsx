@@ -56,12 +56,13 @@ const man = [
  |      
 --------`,
 ];
-const normalizar = (str: string) =>
+const normalizar = (str: string = ""): string =>
   str
-    .normalize("NFC")
+    .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .trim()
-    .toUpperCase();
+    .toUpperCase()
+    .slice(0, 1);
 
 // 🔹 Función para calcular puntuación
 
@@ -71,6 +72,7 @@ function Game() {
   const [attempts, setAttempts] = useState<number>(0);
   const [select, setSelect] = useState<string>("facil");
   const [word, setWord] = useState<string[]>([]);
+  const [wrongChar, setWrongChar] = useState<string[]>([]);
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
   const [letterInput, setLetterInput] = useState<string>("");
 
@@ -121,6 +123,7 @@ function Game() {
       setGuessedLetters([...guessedLetters, upperLetter]);
     } else if (attempts < man.length - 1) {
       setAttempts(attempts + 1);
+      setWrongChar([...wrongChar, upperLetter]);
     }
     setLetterInput("");
   };
@@ -173,7 +176,7 @@ function Game() {
       const puntuacion = calcularPuntuacion(tiempo, attempts);
       Swal.fire({
         title: "¡Ganaste! 🎉",
-        text: `Desea guardar su puntuación? ${puntuacion} `,
+        text: `Desea sumar su puntuación? ${puntuacion} `,
         icon: "success",
         showCancelButton: true,
         confirmButtonText: "Aceptar",
@@ -196,7 +199,7 @@ function Game() {
             console.error(Error);
             Swal.fire({
               title: "Error",
-              text: "No se pudo guardar la puntuación. Inténtalo de nuevo.",
+              text: "No se pudo sumar la puntuación. Inténtalo de nuevo.",
               icon: "error",
               confirmButtonText: "Entendido",
             });
@@ -213,7 +216,7 @@ function Game() {
       setCorriendo(false);
       Swal.fire({
         title: "¡Perdiste! 😢",
-        text: `La palabra era: ${word.join("")}`,
+        text: `La palabra era: ${word.join("")}. Se restan 1000`,
         icon: "error",
         confirmButtonText: "Aceptar",
       });
@@ -314,10 +317,24 @@ function Game() {
               autoCorrect="off"
               autoCapitalize="none"
               value={letterInput}
-              onChange={(e) => setLetterInput(e.target.value.toUpperCase())}
+              onChange={(e) => setLetterInput(normalizar(e.target.value))}
               className="text-center p-2 border rounded w-16"
               disabled={word.length === 0 || isWinner || isLoser}
             />
+            {wrongChar.length > 0 && (
+              <div className="flex justify-center gap-2 flex-wrap mb-4">
+                <span className="text-red-600 font-bold">Letras fallidas:</span>
+                {wrongChar.map((letter, index) => (
+                  <span
+                    key={index}
+                    className="text-white bg-red-500 rounded-full w-8 h-8 flex items-center justify-center font-bold"
+                  >
+                    {letter}
+                  </span>
+                ))}
+              </div>
+            )}
+
             <Button
               onClick={() => letterInput && guessLetter(letterInput)}
               className="bg-green-500 hover:bg-green-600 text-white"
