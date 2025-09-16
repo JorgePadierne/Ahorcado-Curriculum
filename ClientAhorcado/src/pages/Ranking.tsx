@@ -21,7 +21,7 @@ function Ranking() {
 
   return (
     <>
-      <div className="max-w-2xl mx-auto mt-10">
+      <div className="max-w-2xl mx-auto mt-10 mt-50">
         <h1 className="text-3xl font-extrabold text-center mb-6 text-indigo-700">
           🏆 Ranking
         </h1>
