@@ -62,9 +62,11 @@ export default function NavBar() {
               key={item.name}
               to={item.href}
               className={({ isActive }) =>
-                isActive
-                  ? "text-lg font-semibold text-green-600 underline shadow bg-gray-100"
-                  : "text-lg font-semibold text-gray-900 hover:text-green-500 transition duration-300"
+                `text-lg font-semibold px-6 py-3 rounded transition-all ${
+                  isActive
+                    ? "text-green-600 underline shadow bg-gray-100"
+                    : "text-gray-700 hover:text-green-600"
+                }`
               }
             >
               {item.name}
