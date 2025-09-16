@@ -37,13 +37,15 @@ function Signin() {
           progress: undefined,
           theme: "light",
         });
-        const newUser = {
-          id: response.data.id || Date.now(), // Usar ID del servidor o timestamp como fallback
-          name: data.usuario,
-        };
-        login(newUser);
-        navigate("/");
       }
+      const newUser = {
+        id: response.data.id || Date.now(), // Usar ID del servidor o timestamp como fallback
+        name: data.usuario,
+      };
+      login(newUser);
+      setTimeout(() => {
+        navigate("/");
+      });
     } catch (error) {
       toast.error("Error al crear usuario", {
         position: "top-right",

@@ -24,7 +24,6 @@ export default function NavBar() {
         aria-label="Global"
         className="flex items-center justify-between p-6 lg:px-8"
       >
-        {/* Logo / izquierda */}
         <div className="flex lg:flex-1">
           <span
             className="text-xl font-bold cursor-pointer"
@@ -34,7 +33,6 @@ export default function NavBar() {
           </span>
         </div>
 
-        {/* Botón hamburguesa para móviles */}
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -58,7 +56,6 @@ export default function NavBar() {
           </button>
         </div>
 
-        {/* Navegación desktop */}
         <div className="hidden lg:flex lg:gap-x-12 text-xl">
           {navigation.map((item) => (
             <NavLink
@@ -75,7 +72,6 @@ export default function NavBar() {
           ))}
         </div>
 
-        {/* Logout en desktop */}
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <a
             onClick={handleNavigate}
@@ -86,7 +82,6 @@ export default function NavBar() {
         </div>
       </nav>
 
-      {/* Menú móvil */}
       <Dialog
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}

@@ -37,13 +37,15 @@ function Login() {
           progress: undefined,
           theme: "light",
         });
-        const user = {
-          id: Date.now(), // Generar ID temporal ya que el servidor no devuelve datos del usuario
-          name: data.usuario,
-        };
-        login(user);
-        navigate("/dashboard");
       }
+      const user = {
+        id: Date.now(), // Generar ID temporal ya que el servidor no devuelve datos del usuario
+        name: data.usuario,
+      };
+      login(user);
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1000);
     } catch (error) {
       toast.error("Error al iniciar sesión", {
         position: "top-right",
