@@ -278,10 +278,15 @@ function Game() {
             }
             return (
               <div key={index} className="w-10 text-center">
-                <div className="text-2xl">
+                <div
+                  className={`underline p-2 text-2xl w-10 inline-block text-center ${
+                    guessedLetters.includes(letter)
+                      ? "text-green-700 font-bold"
+                      : "text-gray-400"
+                  }`}
+                >
                   {guessedLetters.includes(letter) ? letter : ""}
                 </div>
-                <div className="border-b-2 border-gray-400"></div>
               </div>
             );
           })}
