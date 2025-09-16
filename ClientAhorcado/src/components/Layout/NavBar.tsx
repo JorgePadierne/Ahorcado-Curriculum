@@ -19,13 +19,22 @@ export default function NavBar() {
   };
 
   return (
-    <header className="absolute inset-x-0 top-0 z-50">
+    <header className="absolute inset-x-0 top-0 z-50 bg-white">
       <nav
         aria-label="Global"
         className="flex items-center justify-between p-6 lg:px-8"
       >
-        <div className="flex lg:flex-1"></div>
+        {/* Logo / izquierda */}
+        <div className="flex lg:flex-1">
+          <span
+            className="text-xl font-bold cursor-pointer"
+            onClick={handleNavigate}
+          >
+            MiLogo
+          </span>
+        </div>
 
+        {/* Botón hamburguesa para móviles */}
         <div className="flex lg:hidden">
           <button
             type="button"
@@ -49,11 +58,35 @@ export default function NavBar() {
           </button>
         </div>
 
-        <div className="hidden lg:flex lg:gap-x-12 text-xl">{/* ... */}</div>
+        {/* Navegación desktop */}
+        <div className="hidden lg:flex lg:gap-x-12 text-xl">
+          {navigation.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.href}
+              className={({ isActive }) =>
+                isActive
+                  ? "text-lg font-semibold text-green-600 underline"
+                  : "text-lg font-semibold text-gray-900 hover:text-green-500 transition duration-300"
+              }
+            >
+              {item.name}
+            </NavLink>
+          ))}
+        </div>
 
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end"></div>
+        {/* Logout en desktop */}
+        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a
+            onClick={handleNavigate}
+            className="text-sm font-semibold text-gray-900 cursor-pointer"
+          >
+            Log out <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
       </nav>
 
+      {/* Menú móvil */}
       <Dialog
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
