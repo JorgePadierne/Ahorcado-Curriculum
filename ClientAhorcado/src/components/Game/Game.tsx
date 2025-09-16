@@ -56,19 +56,20 @@ const man = [
  |      
 --------`,
 ];
+
+// 🔹 Normalización de palabra o letra
 const normalizar = (str: string = ""): string =>
   str
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "")
     .trim()
-    .toUpperCase()
-    .slice(0, 1);
+    .toUpperCase();
 
 // 🔹 Función para calcular puntuación
-
 function Game() {
   const api = useAxios();
   const { user } = useAuth();
+
   const [attempts, setAttempts] = useState<number>(0);
   const [select, setSelect] = useState<string>("facil");
   const [word, setWord] = useState<string[]>([]);
@@ -76,7 +77,7 @@ function Game() {
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
   const [letterInput, setLetterInput] = useState<string>("");
 
-  // Cronómetro automático
+  // Cronómetro
   const [tiempo, setTiempo] = useState(0);
   const [corriendo, setCorriendo] = useState(false);
 
@@ -96,6 +97,7 @@ function Game() {
     setTiempo(0);
   };
 
+  // 🔹 Traer palabra según dificultad
   const handleDificultad = async () => {
     try {
       const { data } = await api.get(
@@ -104,6 +106,7 @@ function Game() {
       const wordTemp = normalizar(data.palabra);
       setWord(wordTemp.split(""));
       setGuessedLetters([]);
+      setWrongChar([]); // 🔹 Reiniciar letras fallidas
       setAttempts(0);
       setLetterInput("");
       resetearCronometro();
@@ -113,10 +116,11 @@ function Game() {
     }
   };
 
+  // 🔹 Intentar letra
   const guessLetter = (letter: string) => {
     const upperLetter = normalizar(letter);
+    if (!/^[A-Z]$/.test(upperLetter)) return; // solo letras
     if (!upperLetter) return;
-
     if (guessedLetters.includes(upperLetter)) return;
 
     if (word.includes(upperLetter)) {
@@ -128,9 +132,11 @@ function Game() {
     setLetterInput("");
   };
 
+  // 🔹 Reiniciar juego
   const handleReset = async () => {
     setAttempts(0);
     setGuessedLetters([]);
+    setWrongChar([]);
     setLetterInput("");
     resetearCronometro();
     if (select) {
@@ -144,12 +150,11 @@ function Game() {
     word.length > 0 && word.every((letter) => guessedLetters.includes(letter));
   const isLoser = word.length > 0 && attempts === man.length - 1;
 
-  // 🔹 SweetAlert cuando gana
+  // 🔹 SweetAlert ganador
   useEffect(() => {
     if (isWinner) {
       setCorriendo(false);
 
-      // Función para calcular puntuación
       const calcularPuntuacion = (
         tiempoSegundos: number,
         intentosFallidos: number
@@ -163,12 +168,8 @@ function Game() {
           tiempoSegundos * penalizacionPorSegundo -
           intentosFallidos * penalizacionPorIntento;
 
-        if (select === "medio") {
-          puntuacion = puntuacion * 2;
-        }
-        if (select === "dificil") {
-          puntuacion = puntuacion * 5;
-        }
+        if (select === "medio") puntuacion *= 2;
+        if (select === "dificil") puntuacion *= 5;
 
         return Math.max(puntuacion, 0);
       };
@@ -176,7 +177,7 @@ function Game() {
       const puntuacion = calcularPuntuacion(tiempo, attempts);
       Swal.fire({
         title: "¡Ganaste! 🎉",
-        text: `Desea sumar su puntuación? ${puntuacion} `,
+        text: `Desea sumar su puntuación? ${puntuacion}`,
         icon: "success",
         showCancelButton: true,
         confirmButtonText: "Aceptar",
@@ -210,13 +211,13 @@ function Game() {
     }
   }, [isWinner, api, attempts, tiempo, user?.name, select]);
 
-  // 🔹 SweetAlert cuando pierde
+  // 🔹 SweetAlert perdedor
   useEffect(() => {
     if (isLoser) {
       setCorriendo(false);
       Swal.fire({
         title: "¡Perdiste! 😢",
-        text: `La palabra era: ${word.join("")}. Se restan 1000`,
+        text: `La palabra era: ${word.join("")}. Se restan 1000 pts`,
         icon: "error",
         confirmButtonText: "Aceptar",
       });
@@ -277,34 +278,18 @@ function Game() {
 
         {/* Palabra */}
         <div className="flex justify-center gap-2 mb-6 flex-wrap">
-          {word.map((letter, index) => {
-            if (select === "facil" || select === "medio") {
-              return (
-                <span
-                  key={index}
-                  className={`underline p-2 text-2xl w-10 inline-block text-center ${
-                    guessedLetters.includes(letter)
-                      ? "text-green-700 font-bold"
-                      : "text-gray-400"
-                  }`}
-                >
-                  {guessedLetters.includes(letter) ? letter : "_"}
-                </span>
-              );
-            }
-            return (
-              <span
-                key={index}
-                className={`underline p-2 text-2xl w-10 inline-block text-center ${
-                  guessedLetters.includes(letter)
-                    ? "text-green-700 font-bold"
-                    : "text-gray-400"
-                }`}
-              >
-                {guessedLetters.includes(letter) ? letter : ""}
-              </span>
-            );
-          })}
+          {word.map((letter, index) => (
+            <span
+              key={index}
+              className={`underline p-2 text-2xl w-10 inline-block text-center ${
+                guessedLetters.includes(letter)
+                  ? "text-green-700 font-bold"
+                  : "text-gray-400"
+              }`}
+            >
+              {guessedLetters.includes(letter) ? letter : "_"}
+            </span>
+          ))}
         </div>
 
         {/* Input de letras */}
@@ -321,6 +306,7 @@ function Game() {
               className="text-center p-2 border rounded w-16"
               disabled={word.length === 0 || isWinner || isLoser}
             />
+
             {wrongChar.length > 0 && (
               <div className="flex justify-center gap-2 flex-wrap mb-4">
                 <span className="text-red-600 font-bold">Letras fallidas:</span>
