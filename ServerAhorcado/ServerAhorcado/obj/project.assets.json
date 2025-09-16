@@ -2878,23 +2878,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\nesto\\.nuget\\packages\\": {},
+    "C:\\Users\\jorge\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nesto\\Desktop\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\ServerAhorcado.csproj",
+      "projectUniqueName": "C:\\Users\\jorge\\Desktop\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\ServerAhorcado.csproj",
       "projectName": "ServerAhorcado",
-      "projectPath": "C:\\Users\\nesto\\Desktop\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\ServerAhorcado.csproj",
-      "packagesPath": "C:\\Users\\nesto\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nesto\\Desktop\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\obj\\",
+      "projectPath": "C:\\Users\\jorge\\Desktop\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\ServerAhorcado.csproj",
+      "packagesPath": "C:\\Users\\jorge\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jorge\\Desktop\\Ahorcado-Curriculum\\ServerAhorcado\\ServerAhorcado\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\nesto\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jorge\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

@@ -67,7 +67,7 @@ function Game() {
   const api = useAxios();
   const { user } = useAuth();
   const [attempts, setAttempts] = useState<number>(0);
-  const [select, setSelect] = useState<string>("");
+  const [select, setSelect] = useState<string>("facil");
   const [word, setWord] = useState<string[]>([]);
   const [guessedLetters, setGuessedLetters] = useState<string[]>([]);
   const [letterInput, setLetterInput] = useState<string>("");
@@ -233,6 +233,7 @@ function Game() {
             <select
               id="dificultad"
               className="flex-1 rounded border-gray-300 shadow-sm sm:text-sm p-2"
+              value={select}
               onChange={(e) => setSelect(e.target.value)}
             >
               <option value="facil">Fácil</option>
