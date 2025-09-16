@@ -4,10 +4,6 @@ import { useAxios } from "../../hooks/useAxios";
 import { useAuth } from "../../hooks/useAuth";
 import { Input } from "../UI";
 import Swal from "sweetalert2";
-type ResponseApi = {
-  success: boolean;
-  palabra: string;
-};
 
 const man = [
   ` ----|  
@@ -94,10 +90,10 @@ function Game() {
 
   const handleDificultad = async () => {
     try {
-      const res: ResponseApi = await api.get(
+      const { data } = await api.get(
         `/api/juego/palabraaleatoria?dificultad=${select}`
       );
-      const wordTemp = res.palabra.toUpperCase();
+      const wordTemp = data.palabra.toUpperCase();
       setWord(wordTemp.split(""));
       setGuessedLetters([]);
       setAttempts(0);
