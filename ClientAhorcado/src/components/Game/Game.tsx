@@ -97,15 +97,13 @@ function Game() {
       const res: ResponseApi = await api.get(
         `/api/juego/palabraaleatoria?dificultad=${select}`
       );
-      if (res.success) {
-        const wordTemp = res.palabra.toUpperCase();
-        setWord(wordTemp.split(""));
-        setGuessedLetters([]);
-        setAttempts(0);
-        setLetterInput("");
-        resetearCronometro();
-        iniciarCronometro();
-      }
+      const wordTemp = res.palabra.toUpperCase();
+      setWord(wordTemp.split(""));
+      setGuessedLetters([]);
+      setAttempts(0);
+      setLetterInput("");
+      resetearCronometro();
+      iniciarCronometro();
     } catch (Error) {
       console.error(Error);
     }

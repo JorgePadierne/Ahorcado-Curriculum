@@ -22,12 +22,12 @@ function Login() {
     setIsLoading(true);
     try {
       // Intentar hacer login con las credenciales
-      const response = await api.post("/api/usuario/iniciarsesion", {
+      await api.post("/api/usuario/iniciarsesion", {
         Name: data.usuario,
         Password: data.password,
       });
 
-      if (response.data && response.data.success) {
+      setTimeout(() => {
         toast.success("Sesión iniciada", {
           position: "top-right",
           autoClose: 5000,
@@ -45,7 +45,7 @@ function Login() {
         };
         login(user);
         navigate("/dashboard");
-      }
+      }, 1000);
     } catch (error) {
       toast.error("Error al iniciar sesión", {
         position: "top-right",

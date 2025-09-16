@@ -26,7 +26,7 @@ function Signin() {
       });
 
       // Si el registro es exitoso, crear el objeto usuario y hacer login
-      if (response.data) {
+      setTimeout(() => {
         toast.success("Usuario creado", {
           position: "top-right",
           autoClose: 5000,
@@ -43,7 +43,7 @@ function Signin() {
         };
         login(newUser);
         navigate("/dashboard");
-      }
+      }, 1000);
     } catch (error) {
       toast.error("Error al crear usuario", {
         position: "top-right",
