@@ -154,7 +154,7 @@ function Game() {
           puntuacion = puntuacion * 2;
         }
         if (select === "dificil") {
-          puntuacion = puntuacion * 3;
+          puntuacion = puntuacion * 5;
         }
 
         return Math.max(puntuacion, 0);
@@ -261,18 +261,30 @@ function Game() {
 
         {/* Palabra */}
         <div className="flex justify-center gap-2 mb-6 flex-wrap">
-          {word.map((letter, index) => (
-            <span
-              key={index}
-              className={`underline p-2 text-2xl w-10 inline-block text-center ${
-                guessedLetters.includes(letter)
-                  ? "text-green-700 font-bold"
-                  : "text-gray-400"
-              }`}
-            >
-              {guessedLetters.includes(letter) ? letter : ""}
-            </span>
-          ))}
+          {word.map((letter, index) => {
+            if (select === "facil" || select === "medio") {
+              return (
+                <span
+                  key={index}
+                  className={`underline p-2 text-2xl w-10 inline-block text-center ${
+                    guessedLetters.includes(letter)
+                      ? "text-green-700 font-bold"
+                      : "text-gray-400"
+                  }`}
+                >
+                  {guessedLetters.includes(letter) ? letter : "_"}
+                </span>
+              );
+            }
+            return (
+              <div key={index} className="w-10 text-center">
+                <div className="text-2xl">
+                  {guessedLetters.includes(letter) ? letter : ""}
+                </div>
+                <div className="border-b-2 border-gray-400"></div>
+              </div>
+            );
+          })}
         </div>
 
         {/* Input de letras */}
