@@ -56,6 +56,12 @@ const man = [
  |      
 --------`,
 ];
+const normalizar = (str: string) =>
+  str
+    .normalize("NFC")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim()
+    .toUpperCase();
 
 // 🔹 Función para calcular puntuación
 
@@ -93,7 +99,7 @@ function Game() {
       const { data } = await api.get(
         `/api/juego/palabraaleatoria?dificultad=${select}`
       );
-      const wordTemp = data.palabra.toUpperCase();
+      const wordTemp = normalizar(data.palabra);
       setWord(wordTemp.split(""));
       setGuessedLetters([]);
       setAttempts(0);
@@ -106,10 +112,14 @@ function Game() {
   };
 
   const guessLetter = (letter: string) => {
-    const upperLetter = letter.toUpperCase();
-    if (word.includes(upperLetter) && !guessedLetters.includes(upperLetter)) {
+    const upperLetter = normalizar(letter);
+    if (!upperLetter) return;
+
+    if (guessedLetters.includes(upperLetter)) return;
+
+    if (word.includes(upperLetter)) {
       setGuessedLetters([...guessedLetters, upperLetter]);
-    } else if (!word.includes(upperLetter) && attempts < man.length - 1) {
+    } else if (attempts < man.length - 1) {
       setAttempts(attempts + 1);
     }
     setLetterInput("");
@@ -300,6 +310,9 @@ function Game() {
             <Input
               type="text"
               maxLength={1}
+              autoComplete="off"
+              autoCorrect="off"
+              autoCapitalize="none"
               value={letterInput}
               onChange={(e) => setLetterInput(e.target.value.toUpperCase())}
               className="text-center p-2 border rounded w-16"
