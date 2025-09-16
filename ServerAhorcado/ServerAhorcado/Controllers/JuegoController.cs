@@ -16,7 +16,7 @@ namespace ServerAhorcado.Controllers
         {
             _context = context;
         }
-        [HttpGet("PalabraAleatoria")]
+        [HttpGet("palabraaleatoria")]
         public async Task<IActionResult> GetPalabra([FromQuery] string dificultad)
         {
             try
