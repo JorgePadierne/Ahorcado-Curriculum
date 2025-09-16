@@ -181,6 +181,7 @@ function Game() {
               icon: "success",
               confirmButtonText: "¡Genial!",
             });
+            setWord([]);
           } catch (Error) {
             console.error(Error);
             Swal.fire({
@@ -189,6 +190,7 @@ function Game() {
               icon: "error",
               confirmButtonText: "Entendido",
             });
+            setWord([]);
           }
         }
       });
@@ -205,6 +207,7 @@ function Game() {
         icon: "error",
         confirmButtonText: "Aceptar",
       });
+      setWord([]);
     }
   }, [isLoser, word]);
 
