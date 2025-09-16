@@ -36,7 +36,6 @@ export default function Footer() {
                 className="text-gray-700 transition hover:opacity-75 dark:text-gray-200"
               >
                 <span className="sr-only">GitHub</span>
-                {/* SVG GitHub */}
               </a>
             </li>
           </ul>
@@ -91,35 +90,18 @@ export default function Footer() {
 
           <div>
             <h3 className="font-semibold text-gray-900 dark:text-white">
-              Legal
-            </h3>
-            <ul className="mt-4 space-y-2 text-gray-700 dark:text-gray-300">
-              <li>
-                <a href="#" className="hover:underline">
-                  Términos
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Privacidad
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Política de Cookies
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-gray-900 dark:text-white">
               Contacto
             </h3>
             <ul className="mt-4 space-y-2 text-gray-700 dark:text-gray-300">
-              <li>Email: jorgebolanos535@gmail.com</li>
+              <a
+                href="mailto:jorgebolanos535@gmail.com"
+                className="hover:underline text-teal-600 dark:text-teal-300"
+                target="_blank"
+              >
+                Email: jorgebolanos535@gmail.com
+              </a>
               <li>Teléfono: +34 600 292 908</li>
-              <li>Dirección: Arrefice, Las Palmas, España</li>
+              <li>Dirección: Arrecife, Las Palmas, España</li>
             </ul>
           </div>
 
@@ -128,7 +110,13 @@ export default function Footer() {
               Contacto
             </h3>
             <ul className="mt-4 space-y-2 text-gray-700 dark:text-gray-300">
-              <li>Email: nestortriana287@gmail.com</li>
+              <a
+                href="mailto:nestortriana287@gmail.com"
+                className="hover:underline text-teal-600 dark:text-teal-300"
+                target="_blank"
+              >
+                Email: nestortriana287@gmail.com
+              </a>
               <li>Teléfono: +53 55 476 430</li>
               <li>Dirección: Ciego de Ávila, Cuba</li>
             </ul>
@@ -136,7 +124,7 @@ export default function Footer() {
         </div>
 
         <p className="mt-8 text-center text-sm text-gray-600 dark:text-gray-400">
-          &copy; {new Date().getFullYear()} Tu Empresa. Todos los derechos
+          &copy; {new Date().getFullYear()} ServiciosWeb. Todos los derechos
           reservados.
         </p>
       </div>
