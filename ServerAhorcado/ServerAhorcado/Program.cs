@@ -30,7 +30,7 @@ if (!string.IsNullOrEmpty(databaseUrl) &&
     var password = userInfo[1];
 
     var host = uri.Host;
-    var port = uri.Port;
+    var port = uri.Port == -1 ? 5432 : uri.Port;
     var database = uri.AbsolutePath.TrimStart('/');
 
     var query = HttpUtility.ParseQueryString(uri.Query);
