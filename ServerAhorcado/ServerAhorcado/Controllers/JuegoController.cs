@@ -24,7 +24,7 @@ namespace ServerAhorcado.Controllers
                 IQueryable<Palabra>? query = dificultad switch
                 {
                     "facil" => _context.Palabras.Where(p => p.Palabras.Length >= 4 && p.Palabras.Length <= 5),
-                    "media" => _context.Palabras.Where(p => p.Palabras.Length >= 6 && p.Palabras.Length <= 9),
+                    "medio" => _context.Palabras.Where(p => p.Palabras.Length >= 6 && p.Palabras.Length <= 9),
                     "dificil" => _context.Palabras.Where(p => p.Palabras.Length >= 10),
                     _ => null
                 };
