@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ServerAhorcado",
+    "\\ServerAhorcado\\ServerAhorcado",
+    "\\ServerAhorcado\\ServerAhorcado\\Controllers",
+    "\\ServerAhorcado\\ServerAhorcado\\Models"
   ],
+  "SelectedNode": "\\ServerAhorcado\\ServerAhorcado\\Controllers\\JuegoController.cs",
   "PreviewInSolutionExplorer": false
 }

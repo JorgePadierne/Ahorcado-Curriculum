@@ -113,7 +113,7 @@ namespace ServerAhorcado.Controllers
           var usuario = await _context.Puntuaciones.FirstOrDefaultAsync(u => u.Name == derrota.Name);
           if (usuario != null)
           {
-              usuario.Puntuacion = usuario.Puntuacion - 1000;
+              usuario.Puntuacion = (usuario.Puntuacion ?? 0) - 1000;
               if (usuario.Puntuacion < 0)
               {
                   usuario.Puntuacion = 0;
