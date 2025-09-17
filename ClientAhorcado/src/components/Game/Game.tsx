@@ -220,10 +220,15 @@ function Game() {
         text: `La palabra era: ${word.join("")}. Se restan 1000 pts`,
         icon: "error",
         confirmButtonText: "Aceptar",
+      }).then(async () => {
+        await api.patch("/api/juego/restarpuntaje", {
+          Name: user?.name,
+          Derrota: true,
+        });
       });
       setWord([]);
     }
-  }, [isLoser, word]);
+  }, [isLoser, word, api, user?.name]);
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-50">
