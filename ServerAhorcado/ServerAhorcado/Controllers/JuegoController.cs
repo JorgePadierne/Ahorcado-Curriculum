@@ -108,7 +108,7 @@ namespace ServerAhorcado.Controllers
       {
           if (!ModelState.IsValid)
           {
-              return StatusCode(400, new { succes = false, message = "El usuario a quien restarle puntos no ha sido encontrado: " });
+              return StatusCode(400, new { success = false, message = "El usuario a quien restarle puntos no ha sido encontrado: " });
           }
           var usuario = await _context.Puntuaciones.FirstOrDefaultAsync(u => u.Name == derrota.Name);
           if (usuario != null)
@@ -129,7 +129,7 @@ namespace ServerAhorcado.Controllers
       }
       catch (Exception ex)
       {
-          return StatusCode(500, new { succes = false, message = "Algo ha ido mal :(" + ex.Message });
+          return StatusCode(500, new { success = false, message = "Algo ha ido mal :(" + ex.Message });
       }
   }
 
