@@ -101,6 +101,37 @@ namespace ServerAhorcado.Controllers
                 return StatusCode(500, new { success = false, message = "Algo ha ido mal, inténtelo nuevamente: " + ex.Message });
             }
         }
+          [HttpGet("restarpuntaje")]
+  public async Task<IActionResult> RestarPuntaje([FromQuery] Derrota derrota)
+  {
+      try
+      {
+          if (!ModelState.IsValid)
+          {
+              return StatusCode(400, new { succes = false, message = "El usuario a quien restarle puntos no ha sido encontrado: " });
+          }
+          var usuario = await _context.Puntuaciones.FirstOrDefaultAsync(u => u.Name == derrota.Name);
+          if (usuario != null)
+          {
+              usuario.Puntuacion = usuario.Puntuacion - 1000;
+              if (usuario.Puntuacion < 0)
+              {
+                  usuario.Puntuacion = 0;
+              }
+              await _context.SaveChangesAsync();
+          }
+          else
+          {
+              return StatusCode(404, new { success = false, message = "No se ha podido realizar correctamente la resta de puntaje " });
+          }
+
+          return StatusCode(200, new { success = true, message = "Se ha realizado correctamente la tarea " });
+      }
+      catch (Exception ex)
+      {
+          return StatusCode(500, new { succes = false, message = "Algo ha ido mal :(" + ex.Message });
+      }
+  }
 
     }
 }
