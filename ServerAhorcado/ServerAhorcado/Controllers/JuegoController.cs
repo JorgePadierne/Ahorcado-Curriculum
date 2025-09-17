@@ -102,7 +102,7 @@ namespace ServerAhorcado.Controllers
             }
         }
           [HttpPatch("restarpuntaje")]
-  public async Task<IActionResult> RestarPuntaje([FromQuery] Derrota derrota)
+  public async Task<IActionResult> RestarPuntaje([FromBody] Derrota derrota)
   {
       try
       {
