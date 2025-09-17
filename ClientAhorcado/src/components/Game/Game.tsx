@@ -236,24 +236,25 @@ function Game() {
   }, [isLoser, word, api, user?.name]);
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gray-50">
-      <div className="p-8 w-full max-w-3xl bg-gradient-to-b from-gray-100 to-gray-50 rounded-xl shadow-lg mt-20">
-        <h1 className="text-3xl font-bold text-center mb-6 text-indigo-700">
-          Juego del Ahorcado
+    <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-gray-100 to-gray-50">
+      <div className="p-10 w-full max-w-4xl bg-white rounded-2xl shadow-xl mt-20">
+        {/* Título */}
+        <h1 className="text-4xl font-extrabold text-center mb-8 text-indigo-600">
+          🎯 Juego del Ahorcado
         </h1>
 
         {/* Selección de dificultad */}
-        <div className="mb-6">
+        <div className="mb-8">
           <label
             htmlFor="dificultad"
-            className="block text-sm font-medium text-gray-700 mb-2 text-center"
+            className="block text-sm font-semibold text-gray-700 mb-2 text-center"
           >
             Selecciona dificultad
           </label>
-          <div className="flex gap-2 justify-center">
+          <div className="flex gap-3 justify-center">
             <select
               id="dificultad"
-              className="flex-1 rounded border-gray-300 shadow-sm sm:text-sm p-2"
+              className="rounded-lg border-gray-300 shadow-sm sm:text-sm p-2 focus:ring-indigo-500 focus:border-indigo-500"
               value={select}
               onChange={(e) => setSelect(e.target.value)}
             >
@@ -263,7 +264,7 @@ function Game() {
             </select>
             <Button
               onClick={handleDificultad}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white"
+              className="bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg px-4"
             >
               Aceptar
             </Button>
@@ -271,9 +272,9 @@ function Game() {
         </div>
 
         {/* Cronómetro */}
-        <div className="text-center mb-4">
-          <span className="text-xl font-mono bg-gray-300 px-4 py-2 rounded shadow-inner">
-            Tiempo:{" "}
+        <div className="text-center mb-6">
+          <span className="inline-block text-xl font-mono bg-gray-100 px-6 py-3 rounded-lg shadow-inner text-gray-800">
+            ⏳ Tiempo:{" "}
             {Math.floor(tiempo / 60)
               .toString()
               .padStart(2, "0")}
@@ -282,20 +283,20 @@ function Game() {
         </div>
 
         {/* Muñeco */}
-        <pre className="text-left whitespace-pre font-mono text-3xl bg-gray-200 p-6 rounded shadow-inner text-center mb-6">
+        <pre className="whitespace-pre font-mono text-3xl bg-gray-50 p-6 rounded-xl shadow-inner text-center mb-8">
           {man[attempts]}
         </pre>
 
         {/* Palabra */}
-        <div className="flex justify-center gap-2 mb-6 flex-wrap">
+        <div className="flex justify-center gap-3 mb-8 flex-wrap">
           {(select === "facil" || select === "medio") &&
             word.map((letter, index) => (
               <span
                 key={index}
-                className={`underline p-2 text-2xl w-10 inline-block text-center ${
+                className={`p-2 text-3xl w-10 inline-block text-center border-b-4 ${
                   guessedLetters.includes(letter)
-                    ? "text-green-700 font-bold"
-                    : "text-gray-400"
+                    ? "text-green-600 font-bold border-green-400"
+                    : "text-gray-400 border-gray-300"
                 }`}
               >
                 {guessedLetters.includes(letter) ? letter : "_"}
@@ -305,10 +306,10 @@ function Game() {
             word.map((letter, index) => (
               <span
                 key={index}
-                className={`underline p-2 text-2xl w-10 inline-block text-center ${
+                className={`p-2 text-3xl w-10 inline-block text-center border-b-4 ${
                   guessedLetters.includes(letter)
-                    ? "text-green-700 font-bold"
-                    : "text-gray-400"
+                    ? "text-green-600 font-bold border-green-400"
+                    : "text-gray-400 border-gray-300"
                 }`}
               >
                 {guessedLetters.includes(letter) ? letter : ""}
@@ -318,48 +319,51 @@ function Game() {
 
         {/* Input de letras */}
         {!isWinner && !isLoser && (
-          <div className="flex justify-center gap-2 mb-4">
-            <Input
-              type="text"
-              maxLength={1}
-              autoComplete="off"
-              autoCorrect="off"
-              autoCapitalize="none"
-              value={letterInput}
-              onChange={(e) => setLetterInput(normalizar(e.target.value))}
-              className="text-center p-2 border rounded w-16"
-              disabled={word.length === 0 || isWinner || isLoser}
-            />
+          <div className="flex flex-col items-center gap-4 mb-6">
+            <div className="flex gap-3">
+              <Input
+                type="text"
+                maxLength={1}
+                autoComplete="off"
+                autoCorrect="off"
+                autoCapitalize="none"
+                value={letterInput}
+                onChange={(e) => setLetterInput(normalizar(e.target.value))}
+                className="text-center p-3 border rounded-lg w-16 text-lg focus:ring-indigo-500 focus:border-indigo-500"
+                disabled={word.length === 0 || isWinner || isLoser}
+              />
+              <Button
+                onClick={() => letterInput && guessLetter(letterInput)}
+                className="bg-green-500 hover:bg-green-600 text-white rounded-lg px-6"
+                disabled={word.length === 0 || isWinner || isLoser}
+              >
+                Intentar
+              </Button>
+            </div>
 
             {wrongChar.length > 0 && (
-              <div className="flex justify-center gap-2 flex-wrap mb-4">
-                <span className="text-red-600 font-bold">Letras fallidas:</span>
+              <div className="flex flex-wrap justify-center gap-2">
+                <span className="text-red-600 font-semibold">
+                  Letras fallidas:
+                </span>
                 {wrongChar.map((letter, index) => (
                   <span
                     key={index}
-                    className="text-white bg-red-500 rounded-full w-8 h-8 flex items-center justify-center font-bold"
+                    className="text-white bg-red-500 rounded-full w-8 h-8 flex items-center justify-center font-bold shadow-md"
                   >
                     {letter}
                   </span>
                 ))}
               </div>
             )}
-
-            <Button
-              onClick={() => letterInput && guessLetter(letterInput)}
-              className="bg-green-500 hover:bg-green-600 text-white"
-              disabled={word.length === 0 || isWinner || isLoser}
-            >
-              Intentar
-            </Button>
           </div>
         )}
 
         {/* Botón Reiniciar */}
-        <div className="text-center flex justify-center gap-2 flex-wrap">
+        <div className="text-center">
           <Button
             onClick={handleReset}
-            className="bg-red-500 hover:bg-red-600 text-white"
+            className="bg-red-500 hover:bg-red-600 text-white rounded-lg px-6"
           >
             Reiniciar
           </Button>

@@ -1,22 +1,25 @@
 function Tutorial() {
   return (
-    <div className="p-6 text-xl">
-      <section className="mb-8 bg-white rounded-2xl shadow p-6 hover:scale-105 transition duration-300">
-        <h2 className="text-2xl font-semibold text-green-400 mb-3">
-          1. ¿Qué es el Ahorcado?
+    <div className="p-6 md:p-10 text-lg bg-gradient-to-br from-green-50 via-white to-green-100 rounded-3xl shadow-inner">
+      {/* 1. ¿Qué es el Ahorcado? */}
+      <section className="mb-8 bg-white rounded-3xl shadow-lg p-6 md:p-8 hover:shadow-xl hover:scale-105 transition duration-300">
+        <h2 className="text-3xl font-bold text-green-600 mb-3 flex items-center gap-2">
+          <span className="text-green-500">1.</span> ¿Qué es el Ahorcado?
         </h2>
-        <p>
+        <p className="text-gray-700">
           El <strong>ahorcado</strong> es un juego clásico de adivinar palabras
           en el que el jugador debe intentar descubrir letra por letra hasta
           revelar totalmente el vocablo en la menor cantidad de intentos
           posibles. Cada error acerca al “ahorcado” a completar su dibujo.
         </p>
       </section>
-      <section className="mb-8 bg-white rounded-2xl shadow p-6 hover:scale-105 transition duration-300">
-        <h2 className="text-2xl font-semibold text-green-400 mb-3">
-          2. Reglas Básicas
+
+      {/* 2. Reglas básicas */}
+      <section className="mb-8 bg-white rounded-3xl shadow-lg p-6 md:p-8 hover:shadow-xl hover:scale-105 transition duration-300">
+        <h2 className="text-3xl font-bold text-green-600 mb-3 flex items-center gap-2">
+          <span className="text-green-500">2.</span> Reglas Básicas
         </h2>
-        <ul className="list-disc list-inside space-y-2">
+        <ul className="list-disc list-inside space-y-2 text-gray-700">
           <li>
             Se le otorgará al jugador una palabra secreta aleatoria (el largo y
             la dificultad dependerán del modo de juego seleccionado).
@@ -29,52 +32,60 @@ function Tutorial() {
           </li>
         </ul>
       </section>
-      <section className="mb-8 bg-white rounded-2xl shadow p-6 hover:scale-105 transition duration-300">
-        <h2 className="text-2xl font-semibold text-green-400 mb-3">
-          3. Elementos del Juego
+
+      {/* 3. Elementos del juego */}
+      <section className="mb-8 bg-white rounded-3xl shadow-lg p-6 md:p-8 hover:shadow-xl hover:scale-105 transition duration-300">
+        <h2 className="text-3xl font-bold text-green-600 mb-3 flex items-center gap-2">
+          <span className="text-green-500">3.</span> Elementos del Juego
         </h2>
-        <div className="grid md:grid-cols-2 gap-4">
-          <div>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="bg-gray-50 rounded-xl p-4 shadow-inner">
             <h3 className="font-semibold text-lg text-gray-700 mb-2">
               Palabra Oculta
             </h3>
-            <p>
+            <p className="text-gray-700">
               En los modos fácil y medio será representada sustituyendo, en un
               inicio, con guiones o líneas cada letra. Ejemplo:{" "}
-              <code>_ _ _ _ _</code>
+              <code className="font-mono">_ _ _ _ _</code>
             </p>
-            <p>
+            <p className="text-gray-700">
               En el caso del modo difícil, como parte de la experiencia de
               juego, estas líneas no serán mostradas.
             </p>
           </div>
-          <div>
+          <div className="bg-gray-50 rounded-xl p-4 shadow-inner">
             <h3 className="font-semibold text-lg text-gray-700 mb-2">
               Dibujo del Ahorcado
             </h3>
-            <p>
+            <p className="text-gray-700">
               Cada fallo añade una parte al cuerpo: cabeza, torso, brazos,
               piernas...
             </p>
           </div>
         </div>
       </section>
-      <section className="mb-8 bg-white rounded-2xl shadow p-6 text-center hover:scale-105 transition duration-300">
-        <h2 className="text-2xl font-semibold text-green-400 mb-3">
-          4. Ejemplo Rápido
+
+      {/* 4. Ejemplo rápido */}
+      <section className="mb-8 bg-white rounded-3xl shadow-lg p-6 md:p-8 text-center hover:shadow-xl hover:scale-105 transition duration-300">
+        <h2 className="text-3xl font-bold text-green-600 mb-3 flex justify-center items-center gap-2">
+          <span className="text-green-500">4.</span> Ejemplo Rápido
         </h2>
-        <p className="mb-4">Supongamos que la palabra secreta es “GATO”:</p>
-        <div className="inline-block bg-gray-50 rounded-xl px-6 py-4 shadow">
-          <p className="font-mono text-lg mb-2">_ _ _ _</p>
+        <p className="mb-4 text-gray-700">
+          Supongamos que la palabra secreta es “GATO”:
+        </p>
+        <div className="inline-block bg-gray-50 rounded-2xl px-6 py-4 shadow-inner">
+          <p className="font-mono text-lg mb-2 tracking-widest">_ _ _ _</p>
           <p className="text-gray-600 text-sm">Se han intentado: A, E, I</p>
-          <p className="text-red-400 text-sm">Fallos: 2</p>
+          <p className="text-red-400 text-sm font-semibold">Fallos: 2</p>
         </div>
       </section>
-      <section className="bg-white rounded-2xl shadow p-6 hover:scale-105 transition duration-300">
-        <h2 className="text-2xl font-semibold text-green-400 mb-3">
-          5. Consejos para Jugar Mejor
+
+      {/* 5. Consejos */}
+      <section className="bg-white rounded-3xl shadow-lg p-6 md:p-8 hover:shadow-xl hover:scale-105 transition duration-300">
+        <h2 className="text-3xl font-bold text-green-600 mb-3 flex items-center gap-2">
+          <span className="text-green-500">5.</span> Consejos para Jugar Mejor
         </h2>
-        <ul className="list-disc list-inside space-y-2">
+        <ul className="list-disc list-inside space-y-2 text-gray-700">
           <li>Comienza probando vocales, suelen aparecer con frecuencia.</li>
           <li>Piensa en palabras comunes según las letras descubiertas.</li>
           <li>Gestiona tus intentos: cada error cuenta.</li>

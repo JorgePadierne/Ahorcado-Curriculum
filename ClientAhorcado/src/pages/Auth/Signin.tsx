@@ -64,26 +64,33 @@ function Signin() {
   });
 
   return (
-    <div className="flex flex-col justify-center items-center px-6 py-12 lg:px-8 bg-white pt-36">
+    <div className="flex flex-col justify-center items-center px-6 py-12 lg:px-8 bg-gradient-to-br from-green-100 via-white to-green-50 min-h-screen">
       <ToastContainer />
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-        <h1 className="text-3xl font-bold text-center text-green-400 mb-2">
+
+      {/* Títulos */}
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm text-center">
+        <h1 className="text-4xl font-extrabold text-green-600 mb-2 drop-shadow">
           ¡Juego del Ahorcado!
         </h1>
-        <h2 className="text-center text-xl font-semibold text-gray-700 mb-10">
+        <h2 className="text-lg font-medium text-gray-700 mb-8">
           Crea una cuenta para jugar
         </h2>
       </div>
 
-      <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+      {/* Card del formulario */}
+      <div className="sm:mx-auto sm:w-full sm:max-w-sm bg-white shadow-xl rounded-2xl p-8">
         <form className="space-y-6" onSubmit={createUser}>
+          {/* Usuario */}
           <div>
-            <Label htmlFor="usuario">Usuario</Label>
+            <Label htmlFor="usuario" className="font-medium text-gray-700">
+              Usuario
+            </Label>
             <div className="mt-2">
               <Input
                 id="usuario"
                 type="text"
                 placeholder="Nombre de usuario..."
+                className="w-full rounded-xl border-gray-300 focus:border-green-500 focus:ring-green-500 transition duration-200"
                 {...register("usuario", {
                   required: {
                     value: true,
@@ -107,15 +114,17 @@ function Signin() {
             </div>
           </div>
 
+          {/* Contraseña */}
           <div>
-            <div className="flex items-center justify-between">
-              <Label htmlFor="password">Contraseña</Label>
-            </div>
+            <Label htmlFor="password" className="font-medium text-gray-700">
+              Contraseña
+            </Label>
             <div className="mt-2">
               <Input
                 id="password"
                 type="password"
                 placeholder="••••••••"
+                className="w-full rounded-xl border-gray-300 focus:border-green-500 focus:ring-green-500 transition duration-200"
                 {...register("password", {
                   required: {
                     value: true,
@@ -139,18 +148,25 @@ function Signin() {
                 )}
             </div>
           </div>
+
+          {/* Botón */}
           <div>
-            <Button type="submit" disabled={isLoading}>
+            <Button
+              type="submit"
+              disabled={isLoading}
+              className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold rounded-xl py-2 shadow-md transition duration-300"
+            >
               {isLoading ? "Creando cuenta..." : "Crear Cuenta"}
             </Button>
           </div>
         </form>
 
-        <p className="mt-10 text-center text-sm text-gray-500">
+        {/* Link para login */}
+        <p className="mt-6 text-center text-sm text-gray-500">
           ¿Ya tienes cuenta?{" "}
           <Link
             to="/"
-            className="font-semibold text-green-600 hover:text-green-500"
+            className="font-semibold text-green-600 hover:text-green-500 transition duration-200"
           >
             Inicia sesión aquí
           </Link>
