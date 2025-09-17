@@ -26,10 +26,7 @@ export default function NavBar() {
       >
         {/* Logo */}
         <div className="flex lg:flex-1">
-          <span
-            onClick={() => navigate("/")}
-            className="text-2xl font-extrabold text-green-600 cursor-pointer tracking-tight"
-          >
+          <span className="text-2xl font-extrabold text-green-600 cursor-pointer tracking-tight">
             Ahorcado
           </span>
         </div>
