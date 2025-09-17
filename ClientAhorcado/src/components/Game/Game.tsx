@@ -221,10 +221,14 @@ function Game() {
         icon: "error",
         confirmButtonText: "Aceptar",
       }).then(async () => {
-        await api.patch("/api/juego/restarpuntaje", {
-          Name: user?.name,
-          Derrota: true,
-        });
+        try {
+         await api.patch("/api/juego/restarpuntaje", {
+           Usuario: user?.name,
+           Derrota: true,
+         });} catch (err) {
+           console.error(err);
+           Swal.fire("Error", "No se pudo restar el puntaje.", "error");
+         }
       });
       setWord([]);
     }
