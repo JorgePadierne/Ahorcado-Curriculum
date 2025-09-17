@@ -6,10 +6,10 @@ function Tutorial() {
           1. ¿Qué es el Ahorcado?
         </h2>
         <p>
-          El <strong>ahorcado</strong> es un juego clásico para adivinar
-          palabras. Un jugador piensa una palabra secreta y el otro debe
-          adivinarla letra por letra. Cada error acerca al “ahorcado” a
-          completar su dibujo.
+          El <strong>ahorcado</strong> es un juego clásico de adivinar palabras
+          en el que el jugador debe intentar descubrir letra por letra hasta
+          revelar totalmente el vocablo en la menor cantidad de intentos
+          posibles. Cada error acerca al “ahorcado” a completar su dibujo.
         </p>
       </section>
       <section className="mb-8 bg-white rounded-2xl shadow p-6 hover:scale-105 transition duration-300">
@@ -17,9 +17,12 @@ function Tutorial() {
           2. Reglas Básicas
         </h2>
         <ul className="list-disc list-inside space-y-2">
-          <li>Un jugador elige una palabra secreta sin revelarla.</li>
-          <li>El otro jugador va diciendo letras para adivinar la palabra.</li>
-          <li>Si la letra existe en la palabra, se revela en su posición.</li>
+          <li>
+            Se le otorgará al jugador una palabra secreta aleatoria (el largo y
+            la dificultad dependerán del modo de juego seleccionado).
+          </li>
+          <li>El jugador va ingresando letras para adivinar la palabra.</li>
+          <li>Si la letra existe en la misma, se revela en su posición.</li>
           <li>Si la letra no existe, se dibuja una parte del “ahorcado”.</li>
           <li>
             El juego termina al adivinar la palabra o completar el dibujo.
@@ -36,8 +39,13 @@ function Tutorial() {
               Palabra Oculta
             </h3>
             <p>
-              Representada con guiones o líneas para cada letra. Ejemplo:{" "}
+              En los modos fácil y medio será representada sustituyendo, en un
+              inicio, con guiones o líneas cada letra. Ejemplo:{" "}
               <code>_ _ _ _ _</code>
+            </p>
+            <p>
+              En el caso del modo difícil, como parte de la experiencia de
+              juego, estas líneas no serán mostradas.
             </p>
           </div>
           <div>
@@ -45,7 +53,8 @@ function Tutorial() {
               Dibujo del Ahorcado
             </h3>
             <p>
-              Cada fallo añade una parte: cabeza, cuerpo, brazos, piernas...
+              Cada fallo añade una parte al cuerpo: cabeza, torso, brazos,
+              piernas...
             </p>
           </div>
         </div>
