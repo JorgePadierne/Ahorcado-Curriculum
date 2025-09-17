@@ -223,7 +223,7 @@ function Game() {
       }).then(async () => {
         try {
          await api.patch("/api/juego/restarpuntaje", {
-           Usuario: user?.name,
+           Name: user?.name,
            Derrota: true,
          });} catch (err) {
            console.error(err);
