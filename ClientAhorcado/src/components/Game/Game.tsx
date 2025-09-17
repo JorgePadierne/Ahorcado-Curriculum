@@ -278,18 +278,32 @@ function Game() {
 
         {/* Palabra */}
         <div className="flex justify-center gap-2 mb-6 flex-wrap">
-          {word.map((letter, index) => (
-            <span
-              key={index}
-              className={`underline p-2 text-2xl w-10 inline-block text-center ${
-                guessedLetters.includes(letter)
-                  ? "text-green-700 font-bold"
-                  : "text-gray-400"
-              }`}
-            >
-              {guessedLetters.includes(letter) ? letter : "_"}
-            </span>
-          ))}
+          {(select === "facil" || select === "medio") &&
+            word.map((letter, index) => (
+              <span
+                key={index}
+                className={`underline p-2 text-2xl w-10 inline-block text-center ${
+                  guessedLetters.includes(letter)
+                    ? "text-green-700 font-bold"
+                    : "text-gray-400"
+                }`}
+              >
+                {guessedLetters.includes(letter) ? letter : "_"}
+              </span>
+            ))}
+          {select === "dificil" &&
+            word.map((letter, index) => (
+              <span
+                key={index}
+                className={`underline p-2 text-2xl w-10 inline-block text-center ${
+                  guessedLetters.includes(letter)
+                    ? "text-green-700 font-bold"
+                    : "text-gray-400"
+                }`}
+              >
+                {guessedLetters.includes(letter) ? letter : ""}
+              </span>
+            ))}
         </div>
 
         {/* Input de letras */}

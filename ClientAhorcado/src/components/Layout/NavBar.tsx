@@ -25,12 +25,7 @@ export default function NavBar() {
         className="flex items-center justify-between p-6 lg:px-8"
       >
         <div className="flex lg:flex-1">
-          <span
-            className="text-xl font-bold cursor-pointer"
-            onClick={handleNavigate}
-          >
-            Ahorcado
-          </span>
+          <span className="text-xl font-bold cursor-pointer">Ahorcado</span>
         </div>
 
         <div className="flex lg:hidden">
