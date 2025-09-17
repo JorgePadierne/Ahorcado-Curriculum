@@ -101,7 +101,7 @@ namespace ServerAhorcado.Controllers
                 return StatusCode(500, new { success = false, message = "Algo ha ido mal, inténtelo nuevamente: " + ex.Message });
             }
         }
-          [HttpGet("restarpuntaje")]
+          [HttpPatch("restarpuntaje")]
   public async Task<IActionResult> RestarPuntaje([FromQuery] Derrota derrota)
   {
       try
