@@ -73,48 +73,6 @@ export default function Footer() {
         {/* Links */}
         <div className="grid grid-cols-1 gap-8 border-t border-gray-700 pt-8 sm:grid-cols-2 lg:grid-cols-4 lg:pt-12">
           <div>
-            <h3 className="font-semibold text-green-400">Compañía</h3>
-            <ul className="mt-4 space-y-2 text-gray-300">
-              <li>
-                <a href="#" className="hover:text-green-300">
-                  Sobre Nosotros
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-green-300">
-                  Carreras
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-green-300">
-                  Blog
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="font-semibold text-green-400">Soporte</h3>
-            <ul className="mt-4 space-y-2 text-gray-300">
-              <li>
-                <a href="#" className="hover:text-green-300">
-                  Ayuda
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-green-300">
-                  FAQ
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:text-green-300">
-                  Contacto
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
             <h3 className="font-semibold text-green-400">Contacto</h3>
             <ul className="mt-4 space-y-2 text-gray-300">
               <li>
